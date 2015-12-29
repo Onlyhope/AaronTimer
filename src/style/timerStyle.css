@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 18, 2015, 7:56:16 PM
+    Author     : Aaron
+*/
+
+// General UI Layouts
+.root {
+    -fx-base: #373b41;
+    -fx-font-family: "helvetica";
+    -fx-font-size: 12pt;
+    -fx-min-width: 600;
+    -fx-min-height: 450;
+}
+
+// Timer Display UI Layouts
+.timer_display {
+    -fx-background-color: beige;
+    -fx-min-width: 600;
+    -fx-border-color: black;
+    -fx-border-width: 2 2 2 1;
+    -fx-padding: 150;
+}
+
+.time_display {
+    -fx-background-color: pink;
+    -fx-position-shape: true;
+}
+
+.time_label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 30pt;
+}
+
+.time_toolbar_display {
+    -fx-background-color: aquamarine;
+    -fx-hgap: 5;
+    -fx-alignment: center;
+}
+
+// Timer Overview UI Layouts
+.timer_overview {
+    -fx-max-width: 250;
+    -fx-background-color: blue;
+    -fx-vgap: 3;
+    -fx-orientation: vertical;
+    -fx-alignment: TOP_CENTER;
+}
+
+.timer_overview_scrollpane {
+    -fx-min-width: 250;
+    -fx-padding: 3 3 3 3;
+    -fx-border-color: black;
+    -fx-border-width: 2 1 2 2;
+}
+
+.timer_overview_toolbar {
+    -fx-vgap: 5;
+    -fx-orientation: vertical;
+    -fx-background-color: greenyellow;
+    -fx-border-width: 2 1 2 2;
+    -fx-border-color: black;
+    -fx-alignment: CENTER;
+}
+
+.timer_overview_mini {
+    -fx-max-width: 250;
+    -fx-background-color: green;
+}
+.timer_overview_mini:hover {
+    -fx-background-color: darkgreen;
+}
+
+.timer_overview_selected_mini { 
+    -fx-background-color: blue;
+}
+
+.timer_overview_selected_mini:hover {
+    -fx-background-color: darkblue;
+}
+
+// Buttons Style
+
+.timer_display_buttons {
+    -fx-padding: 5;
+    -fx-border-color: #cc6666;
+    -fx-border-radius: 1;
+    -fx-border-width: 2;
+}
+
+.timer_overview_buttons {
+    -fx-padding: 5;
+    -fx-border-color: #cc6666;
+    -fx-border-radius: 1;
+    -fx-border-width: 2;
+}
+
