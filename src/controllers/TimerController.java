@@ -26,7 +26,8 @@ public class TimerController {
     public void handleAddTimer() {
         UserInputDialog userInput = new UserInputDialog("Set your timer below:");
         try {
-            timerModel.addTimer(userInput.returnUserInputINT());
+            userInput.display();
+            timerModel.addTimer(userInput.getAddedTimePool());
         } catch (NumberFormatException e) {
             // TODO - Alert user wrong input, using dialog input boxes.
             handleAddTimer();
