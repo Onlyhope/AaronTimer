@@ -8,3 +8,24 @@ and open the template in the editor.
     Author     : Hui Zhen
 */
 
+.root {
+    -fx-base: #373b41;
+    -fx-font-family: "helvetica";
+    -fx-font-size: 12pt;
+    
+}
+
+.input_primary_border_pane {
+
+}
+
+.input_layout_vbox {
+    -fx-alignment: center;
+    -fx-padding: 5 10 5 10;
+}
+
+.input_button_hbox {
+    -fx-alignment: center;
+}
+
+

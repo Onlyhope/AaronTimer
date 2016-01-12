@@ -26,13 +26,16 @@ public class TimerController {
     public void handleAddTimer() {
         UserInputDialog userInput = new UserInputDialog("Set your timer below:");
         try {
-            userInput.display();
-            timerModel.addTimer(userInput.getAddedTimePool());
+            boolean result = userInput.display();
+            
+            if (result) {
+                timerModel.addTimer(userInput.getAddedTimePool());
+                ui.refreshTimerOverview();
+            }
         } catch (NumberFormatException e) {
             // TODO - Alert user wrong input, using dialog input boxes.
             handleAddTimer();
         }
-        ui.refreshTimerOverview();
     }
 
     public void handleRemoveTimer() {

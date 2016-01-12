@@ -16,6 +16,7 @@ public class StartUpConstants {
     public static String PATH_ICONS = PATH_IMAGES + "icons/";
     public static String PATH_CSS = "/style/";
     public static String PATH_STYLE_SHEET_UI = PATH_CSS + "timerStyle.css";
+    public static String PATH_STYLE_SHEET_INPUT_UI = PATH_CSS + "dialogStyle.css";
 
     // Images and Icons
     public static String ICON_WINDOW_LOGO;
@@ -33,4 +34,9 @@ public class StartUpConstants {
     public static String CSS_CLASS_TIMER_OVERVIEW_SCROLLPANE = "timer_overview_scrollpane";
     public static String CSS_CLASS_TIMER_OVERVIEW_TOOLBAR = "timer_overview_toolbar";
     public static String CSS_CLASS_TIMER_OVERVIEW_BUTTONS = "timer_overview_buttons";
+    
+    // CSS - User Input Dialog
+    public static String CSS_CLASS_INPUT_PRIMARY_LAYOUT = "input_primary_border_pane";
+    public static String CSS_CLASS_INPUT_LAYOUT_VBOX = "input_layout_vbox";
+    public static String CSS_CLASS_INPUT_BUTTON_HBOX = "input_button_hbox";
 }

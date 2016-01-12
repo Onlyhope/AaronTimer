@@ -11,9 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import static timer.StartUpConstants.CSS_CLASS_INPUT_BUTTON_HBOX;
+import static timer.StartUpConstants.CSS_CLASS_INPUT_LAYOUT_VBOX;
+import static timer.StartUpConstants.CSS_CLASS_INPUT_PRIMARY_LAYOUT;
+import static timer.StartUpConstants.PATH_CSS;
+import static timer.StartUpConstants.PATH_STYLE_SHEET_INPUT_UI;
 
 /**
  *
@@ -46,7 +53,7 @@ public class UserInputDialog {
     // Layout Components
     private Stage window;
     private Scene scene;
-    private BorderPane primaryLayout;
+    private StackPane primaryLayout;
     private VBox inputLayout;
     private HBox buttonLayout;
 
@@ -80,19 +87,20 @@ public class UserInputDialog {
 
         initEventHandlers();
         
-        inputLayout = new VBox(hourContainer, minuteContainer, secondContainer);
         buttonLayout = new HBox(okButton, cancelButton);
+        inputLayout = new VBox(title, hourContainer, minuteContainer, secondContainer, buttonLayout);
 
-        primaryLayout = new BorderPane();
-        primaryLayout.setTop(title);
-        primaryLayout.setCenter(inputLayout);
-        primaryLayout.setBottom(buttonLayout);
-        //primaryLayout.getStyleClass().add();
-        //inputLayout.getStyleClass().add();
-        //buttonLayout.getStyleClass().add();
+        primaryLayout = new StackPane(inputLayout);
+        
+        hourContainer.getStyleClass().add(CSS_CLASS_INPUT_LAYOUT_VBOX);
+        minuteContainer.getStyleClass().add(CSS_CLASS_INPUT_LAYOUT_VBOX);
+        secondContainer.getStyleClass().add(CSS_CLASS_INPUT_LAYOUT_VBOX);
+        primaryLayout.getStyleClass().add(CSS_CLASS_INPUT_PRIMARY_LAYOUT);
+        inputLayout.getStyleClass().add(CSS_CLASS_INPUT_LAYOUT_VBOX);
+        buttonLayout.getStyleClass().add(CSS_CLASS_INPUT_BUTTON_HBOX);
 
-        scene = new Scene(primaryLayout, 300, 150);
-        //scene.getStylesheets().add();
+        scene = new Scene(primaryLayout);
+        scene.getStylesheets().add(PATH_STYLE_SHEET_INPUT_UI);
 
         window.setScene(scene);
     }
