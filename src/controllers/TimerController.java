@@ -6,6 +6,7 @@
 package controllers;
 
 import model.TimerModel;
+import timer.TimerFileManager;
 import timerView.TimerView;
 
 /**
@@ -16,10 +17,12 @@ public class TimerController {
 
     TimerView ui;
     TimerModel timerModel;
+    TimerFileManager timerFileManager;
 
     public TimerController(TimerView initUI) {
         ui = initUI;
         timerModel = ui.getTimerModel();
+        timerFileManager = new TimerFileManager(ui);
     }
 
     // Timer Overview Toolbar Event Handlers
@@ -37,7 +40,11 @@ public class TimerController {
             handleAddTimer();
         }
     }
-
+    
+    public void handleSaveTimer() {
+       timerFileManager.saveTimers();
+    }
+    
     public void handleRemoveTimer() {
         timerModel.removeTimer();
         ui.refreshTimerOverview();
@@ -100,4 +107,6 @@ public class TimerController {
     public void handleStopAlarm() {
         timerModel.getSelectedTimer().stopAlarm();
     }
+
+    
 }

@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Aaron
  */
-public class Timer implements Runnable {
+public class Timer implements Runnable, Serializable {
 
     public final static int STOPPED = 0;
     public final static int RUNNING = 1;

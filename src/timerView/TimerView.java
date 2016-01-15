@@ -33,6 +33,7 @@ import static timer.StartUpConstants.CSS_CLASS_TIME_DISPLAY;
 import static timer.StartUpConstants.CSS_CLASS_TIME_LABEL;
 import static timer.StartUpConstants.CSS_CLASS_TIME_TOOLBAR_DISPLAY;
 import static timer.StartUpConstants.PATH_STYLE_SHEET_UI;
+import timer.TimerFileManager;
 
 /**
  *
@@ -41,7 +42,7 @@ import static timer.StartUpConstants.PATH_STYLE_SHEET_UI;
 public class TimerView {
 
     TimerModel curTimerModel;
-
+    TimerFileManager timerFileManager;
     TimerController modelController;
 
     // Application UI
@@ -76,10 +77,12 @@ public class TimerView {
     // TimerOverview Buttons
     Button addTimerButton;
     Button removeTimerButton;
+    Button saveTimersButton;
     Button resetAllTimerButton;
     Button clearAllTimerButton;
     Button moveTimerUpButton;
     Button moveTimerDownButton;
+   
     
 
     public TimerView() {
@@ -114,6 +117,10 @@ public class TimerView {
     }
 
     // Setters
+    public void setTimerModel(TimerModel newModel) {
+        curTimerModel = newModel;
+    }
+    
     // Class Helper Methods
     private void initTimerOverview() {
         //TODO
@@ -126,8 +133,6 @@ public class TimerView {
         timerOverviewScrollPane.setFitToWidth(true);
         timerOverviewScrollPane.setFitToHeight(true);
         
-     
-
         timerOverviewLayout.getChildren().addAll(timerOverviewToolbar, timerOverviewScrollPane);
 
         timerOverviewToolbar.getStyleClass().add(CSS_CLASS_TIMER_OVERVIEW_TOOLBAR);
@@ -166,7 +171,8 @@ public class TimerView {
         System.out.println("Initializing Overview Toolbar");
 
         addTimerButton = initChildButton(timerOverviewToolbar, "Add Timer", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
-        removeTimerButton = initChildButton(timerOverviewToolbar, "Remover Timer", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
+        removeTimerButton = initChildButton(timerOverviewToolbar, "Remove Timer", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
+        saveTimersButton = initChildButton(timerOverviewToolbar, "Save Timer", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
         resetAllTimerButton = initChildButton(timerOverviewToolbar, "Reset All", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
         clearAllTimerButton = initChildButton(timerOverviewToolbar, "Clear All", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
         moveTimerUpButton = initChildButton(timerOverviewToolbar, "Move Up", CSS_CLASS_TIMER_OVERVIEW_BUTTONS, false);
@@ -222,7 +228,10 @@ public class TimerView {
         removeTimerButton.setOnAction(e -> {
             modelController.handleRemoveTimer();
         });
-
+        saveTimersButton.setOnAction(e -> {
+            modelController.handleSaveTimer();
+        });
+        
         resetAllTimerButton.setOnAction(e -> {
             modelController.handleResetAllTimer();
         });
@@ -243,12 +252,15 @@ public class TimerView {
     private void initWindow(String windowTitle) {
 
         primaryStage.setTitle(windowTitle);
-
+        
         timerPane = new BorderPane();
         timerPane.getStyleClass().add(CSS_CLASS_TIMER_UI);
         timerPane.setLeft(timerOverviewLayout);
         timerPane.setCenter(timerDisplayLayout);
 
+        timerFileManager = new TimerFileManager(this);
+        timerFileManager.loadTimers();
+        
         primaryScene = new Scene(timerPane);
 
         primaryScene.getStylesheets().add(PATH_STYLE_SHEET_UI);
@@ -257,6 +269,8 @@ public class TimerView {
         //primaryStage.setResizable(false);
 
         primaryStage.show();
+        refreshUI();
+        
     }
 
     private Button initChildButton(Pane toolbar, String description, String cssClass, boolean disabled) {

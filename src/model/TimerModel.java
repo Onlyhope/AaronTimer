@@ -6,6 +6,7 @@
 package model;
 
 import controllers.UserInputDialog;
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -217,5 +218,9 @@ public class TimerModel implements Runnable {
     public void setTimeChange(String timeChangeText) {
         int timeChangeINT = Integer.parseInt(timeChangeText);
         timeChange = timeChangeINT;
+    }
+
+    public void setListOfTimers(ObservableList<Timer> listOfTimers) {
+        this.listOfTimers = listOfTimers;
     }
 }
