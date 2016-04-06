@@ -7,8 +7,6 @@ package model;
 
 import java.io.Serializable;
 import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
