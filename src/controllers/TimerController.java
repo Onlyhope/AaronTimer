@@ -41,6 +41,10 @@ public class TimerController {
         }
     }
     
+    public void handleQuitTimer() {
+        System.exit(0);
+    }
+    
     public void handleSaveTimer() {
        timerFileManager.saveTimers();
     }
